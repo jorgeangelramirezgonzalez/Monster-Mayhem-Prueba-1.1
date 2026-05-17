@@ -27,3 +27,40 @@ for (let r = 0; r < ROWS; r++) {
         gridContainer.appendChild(hex);
     }
 }
+
+// --- LÓGICA DE INTERACTIVIDAD: SELECCIÓN POR CLIC ---
+
+// 1. Creamos una variable en memoria para guardar cuál es el hexágono seleccionado actualmente
+let currentSelectedHex = null;
+
+// 2. Buscamos TODOS los hexágonos que acabamos de meter al contenedor
+const allHexagons = document.querySelectorAll('.hexagon');
+
+// 3. Le asignamos un "escuchador de clics" (EventListener) a cada uno de ellos
+allHexagons.forEach(hex => {
+    hex.addEventListener('click', function() {
+        
+        // REGLA A: Si el usuario hace clic en el hexágono que YA estaba seleccionado, lo deseleccionamos
+        if (currentSelectedHex === hex) {
+            hex.classList.remove('selected');
+            currentSelectedHex = null; // Volvemos a dejar el tablero sin selección
+            console.log("Casilla deseleccionada");
+        } 
+        // REGLA B: Si hace clic en un hexágono nuevo
+        else {
+            // Si ya había otro seleccionado antes en el tablero, le quitamos el color amarillo
+            if (currentSelectedHex !== null) {
+                currentSelectedHex.classList.remove('selected');
+            }
+            
+            // Le ponemos el color amarillo al nuevo hexágono clicado
+            hex.classList.add('selected');
+            
+            // Guardamos este nuevo hexágono como el "activo" en nuestra variable
+            currentSelectedHex = hex;
+            
+            // Imprimimos en la consola de desarrollo la coordenada exacta para verificar
+            console.log(`Casilla seleccionada en la coordenada: Fila ${hex.dataset.row}, Columna ${hex.dataset.col}`);
+        }
+    });
+});

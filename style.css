@@ -64,3 +64,9 @@ body {
     background-color: #00ffcc;
     color: #1a1a1a;
 }
+
+/* REQUISITO: Estilo para el hexágono cuando está seleccionado mediante un clic */
+.hexagon.selected {
+    background-color: #ffcc00; /* Color amarillo oro brillante */
+    color: #1a1a1a;            /* Texto oscuro para que contraste bien */
+}
