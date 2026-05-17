@@ -1,0 +1,32 @@
+/* Estilos para el fondo de la página */
+body {
+    background-color: #1a1a1a; /* Fondo oscuro tipo videojuego */
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* El diseño geométrico del hexágono individual */
+.hexagon {
+    width: 100px;           /* Ancho base de la figura */
+    height: 115.47px;       /* Altura calculada matemáticamente (width * 1.1547) */
+    background-color: #4a4a4a; /* Color gris inicial del tablero */
+    margin: 20px;
+    
+    /* Corta la caja cuadrada usando 6 coordenadas para formar el hexágono */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    
+    /* Hace que el cambio de color al pasar el mouse sea suave y no brusco */
+    transition: background-color 0.3s ease; 
+    cursor: pointer; /* Cambia el diseño del cursor a una mano al posicionarse encima */
+}
+
+/* REQUISITO: Resaltado cuando el cursor pasa por encima (Hover) */
+.hexagon:hover {
+    background-color: #00ffcc; /* Color turquesa brillante distintivo */
+}
