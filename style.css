@@ -70,3 +70,41 @@ body {
     background-color: #ffcc00; /* Color amarillo oro brillante */
     color: #1a1a1a;            /* Texto oscuro para que contraste bien */
 }
+
+/* --- ESTILOS DE LA INTERFAZ DE USUARIO (UI) --- */
+#spawn-monster-btn {
+    background-color: #00ffcc; /* Color turquesa a juego con el hover */
+    color: #1a1a1a;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+    margin-bottom: 20px; /* Separación con los hexágonos */
+}
+
+#spawn-monster-btn:hover {
+    background-color: #ffcc00; /* Cambia a amarillo al pasar el mouse */
+    transform: scale(1.05);    /* Efecto de agrandado sutil */
+}
+
+#spawn-monster-btn:active {
+    transform: scale(0.95);    /* Efecto de hundimiento al hacer clic */
+}
+
+/* Estilo para el texto o emoji del monstruo dentro del hexágono */
+.monster-token {
+    font-size: 28px; /* Tamaño grande para que resalte */
+    animation: spawnPop 0.3s ease-out; /* Animación de aparición */
+    user-select: none; /* Evita que el usuario seleccione el texto sin querer */
+}
+
+/* Animación de entrada para el monstruo */
+@keyframes spawnPop {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}

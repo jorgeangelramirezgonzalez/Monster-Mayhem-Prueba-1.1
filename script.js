@@ -64,3 +64,31 @@ allHexagons.forEach(hex => {
         }
     });
 });
+
+// --- LÓGICA DE LA FASE 4: INVOCACIÓN DE MONSTRUOS ---
+
+// 1. Enganchamos el botón de la interfaz usando su ID
+const spawnButton = document.getElementById('spawn-monster-btn');
+
+// 2. Escuchamos cuándo el usuario hace clic en el botón
+spawnButton.addEventListener('click', function() {
+    
+    // Verificamos si realmente hay un hexágono seleccionado en este momento
+    if (currentSelectedHex !== null) {
+        
+        // Comprobamos si esa casilla ya tiene un monstruo metido dentro
+        const existingMonster = currentSelectedHex.querySelector('.monster-token');
+        
+        if (!existingMonster) {
+            // Reemplazamos el texto de las coordenadas inyectando un contenedor HTML con el emoji
+            currentSelectedHex.innerHTML = `<span class="monster-token">👾</span>`;
+            console.log(`Monstruo invocado con éxito en la casilla: ${currentSelectedHex.dataset.row}, ${currentSelectedHex.dataset.col}`);
+        } else {
+            alert("¡Esta casilla ya tiene un monstruo protegiéndola!");
+        }
+        
+    } else {
+        // Alerta elegante en caso de que intenten pulsar el botón sin elegir una casilla primero
+        alert("Por favor, selecciona primero un hexágono del tablero haciendo clic en él.");
+    }
+});
